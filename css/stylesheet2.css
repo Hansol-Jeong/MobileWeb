@@ -1,0 +1,163 @@
+.logo {
+    font-family: 'Gaegu', cursive;
+    text-decoration-line: none;/*로고의 밑줄을 제거하지 못하는 이유가 무엇입니까*/
+}
+/*공통 클래스*/
+.reset-list {
+    margin-top: 0;
+    margin-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.button {
+    cursor: pointer;
+    border: none;
+}
+
+.a11y-hidden {/*숨겼다가 꺼내오는 용도가 아님 그냥 숨기는 용도*/
+    overflow: hidden;
+    position: absolute;/*important는 왜 오는건가요*/
+    top: -9999em;
+    clip: rect(0, 0, 0, 0);/*인터넷에 있는 clip-path와 같은건가요*/
+    width: 1px;
+    height: 1px;
+    margin: -1px;/*margin을 -1px한다는것은 어떤 의미인가요*/
+}/*top: -9999로 이미 숨겼는데 이 객체의 크기와 보여지는 범위를 제한하는 이유는 무엇인가요*/
+
+::selection {
+    background: blue;
+    color: white;
+}
+body * {
+    -webkit-tap-highlight-color: greenyellow;/* * 가 의미하는것이 무엇인지 기억이 나질 않습니다 아래 그냥 body와의 차이점이 무엇인가요*/
+     /* 또한 tap-highlight-color 는 오류가 뜨면서 적용이 안되는데 이부분은 무엇인가요*/
+}
+
+html {
+    font-size: 10px;/*이러면 html 전 영역에 선적용 되는 것이 맞습니까*/
+}
+
+body {
+    font-size: 1.6rem;/*이러면 위의 적용에 덮어씌워서 적용되는 것이 맞습니까, 또한 이것이 body태그 안의 모든 태그에게 적용됩니까*/
+    background-color: pink;
+    margin: 100 auto;/*이부분 테스트 해보기*/
+    max-width: auto;
+    min-height: auto;
+}
+
+nav a{
+    color: inherit;/*정확히 어떤요소의 상속을 받으며 이 속성이 필요한 이유가 무엇입니까*/
+    text-decoration: none;
+}
+
+/* --------------------------------------------
+  * 헤더 디자인 */
+
+  .app-header {
+      position: fixed;
+      z-index: 500;/*z-index는 출력 순위라고 검색되었습니다. 이 때 1,2,3 같은 순위보다 100,200,1000같은 큰 수를 주는 이유가 있습니까*/
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      height: 100px;
+      justify-content: space-between;
+      background-color: orangered;
+      margin-bottom: 300px;
+      border-bottom: thick double red;
+  }
+
+/* 브랜드 디자인 */
+
+.brand {
+    margin-top: 1%;
+}
+
+.app-navigation {
+    overflow: hidden;/*넘치는건 숨기고*/
+    position: fixed;/*움직일 떄도 고정*/
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding-top: 60px;/*탑에 60px는 어떤 의미입니까->왜 x버튼은 패딩의 영향을 받지 않고 위에 그대로 있습니까*/
+    background: hsla(225, 57%, 10%, 0.9);
+    color: white;
+    transition: all 0.4s cubic-bezier(0.66, -0.01, 0.3, 0.99);/*변하는 모든 요소가 0.4초에 걸쳐 해당 그래프의 형태로 변화한다는 의미가 맞습니까*/
+    transform: translateX(105vw);
+    backdrop-filter: blur(2px);
+}
+
+.app-navigation.is-active {/*아직 자바 스크립트를 해석하지 못해서 개요만 질문합니다*/
+    transform: translateX(0);/*JS에 의해 app-nav태그에 is-active태그가 더해지면x축으로 105vw를 펼친다는 의미같은데 
+    1. 펼치는 방향에 대한 언급이 없음에도 왜 왼쪽으로 펼쳐집니까
+    2. is-active일 때 105가 아닌 왜 0인지 개념을 잘 모르겠습니다.*/
+}
+.app-navigation li {
+    border-bottom: 1px solid black;
+}
+.app-navigation a {
+    display: block;
+    padding: 1em;
+
+}
+
+.app-navigation a:hover{
+    background: #2e437c;
+    transition:all 0.4s ease;/*ease는 하나의 정형화된 그래프입니까*/
+  }
+  .app-navigation a:focus {
+    background: greenyellow;/*transition을 적용하지 않았음에도 누를 때 0.4초에 걸쳐 변합니다 왜 적용이 된 것입니까*/
+  }
+
+    /* 버튼 디자인 */
+    .app-header.button.ir,/*.ir이 아닌 조상 클래스까지 모두 언급하는 이유는 무엇입니까*/
+    .app-header.button.close {
+        cursor: pointer;
+    }
+
+.is-open-menu {
+    user-select: none;
+    padding: 20px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.ir {
+    display: block;
+    cursor: pointer;
+    width: 26px;
+    height: 22px;
+    background: url(../images/navigation-button.gif) no-repeat 50%;/*50%의미느 무엇입니까*/
+}
+
+.is-open-menu:hover,
+.is-open-menu:focus {
+    background: #f5f5f5;
+}
+
+.is-close-menu {
+    position: absolute;
+    z-index: 10;/*이 우선순위의 기준을 잘 모르겠습니다*/
+    top: 10px;
+    right: 10px;
+    padding: 20px;
+    background: blue;
+    clip-path: circle(40%);
+    font-weight: 100;
+    font-size: 40px;
+    line-height: 0.5;/*줄간격*/
+}
+
+.is-close-menu:focus {
+    outline-offset: -10px;/*틀 잡아주는 효과*/
+}
+
+.is-close-menu:hover {
+    transform: scale(1.2);/*호버링시 확대*/
+}
+
+/* --------------------------------------------
+  * 메인 디자인 */

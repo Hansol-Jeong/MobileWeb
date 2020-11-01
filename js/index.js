@@ -75,7 +75,7 @@ function openNavMenu() {
   app_navigation.hidden = false;
   window.setTimeout(function(){
     app_navigation.classList.add('is-active');
-  }, 10);
+  }, 100);
 }
 
 function closeNavMenu() {

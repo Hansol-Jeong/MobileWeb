@@ -36,7 +36,7 @@
     tap-highlight-color: rgba(255, 255, 200, 0.3);
   }
 
-hteml {
+html {
     font-size: 10px;
 }
 
@@ -104,7 +104,7 @@ nav a {
     left: 0;
     right: 0;
     bottom: 0;
-    padding-top: 60px;
+    padding-top: 600px;
     background: hsla(225, 57%, 10%, 0.9);
     color: #fff;
     transition: all 0.4s cubic-bezier(0.66, -0.01, 0.3, 0.99);
@@ -126,12 +126,16 @@ nav a {
   .app-navigation a {
     display: block;
     padding: 1em;
-    transition: all 0.4s ease;
+
   }
   
-  .app-navigation a:hover,
-  .app-navigation a:focus {
+  .app-navigation a:hover{
     background: #2e437c;
+    transition: all 2s ease;
+  }
+  .app-navigation a:focus {
+    background: green;
+
   }
 
   /* 버튼 디자인 */
@@ -179,7 +183,7 @@ nav a {
 }
 
 .app-navigation .button.is-close-menu:focus {
-  outline-offset: -5px;
+  outline-offset: -10px;
 }
 
 .app-navigation .button.is-close-menu:hover {
